@@ -21,3 +21,11 @@ def index():
 @app.get("/get_user/{user_id}")
 def get_user(user_id: int):
     return users[user_id]
+
+# Query parameter
+@app.get("/get_using_name")
+def using_name(name: str):
+    for user in users:
+        if users[user]["name"] == name:
+            return users
+    return {"Data": "Not found"}
