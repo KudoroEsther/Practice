@@ -104,3 +104,11 @@ def update_user(user_id: int, user: Update):
         users[user_id]["year"] = user.year
     return users[user_id]
 
+
+# Delete method
+@app.delete("/delete-user/{user_id}")
+def delete_user(user_id: int):
+    if user_id not in users:
+        return {"Error": "Student does not exists"}
+    del users[user_id]
+    return {"Message": "Student deleted successfully", "Data": users}
